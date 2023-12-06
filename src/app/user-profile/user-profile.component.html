@@ -1,0 +1,41 @@
+<app-navigation></app-navigation>
+<div class="container">
+    <div class="user-profile-container">
+        <div class="user-info">
+            <div class="user-info-username">User profile: {{userProfile?.username}}</div>
+            <div class="user-info-dateCreated">Profile created: {{userProfile?.dateCreated | date: 'dd.MM.yyyy. HH:mm'}}</div>
+        </div>
+        <div class="btn-box">
+            <button class="btn btn-primary" *ngIf="arePostsShowing" (click)="btnClicked()">Show user comments</button>
+            <button class="btn btn-primary" *ngIf="!arePostsShowing" (click)="btnClicked()">Show user posts</button>
+        </div>
+  
+        <div class="user-elements" *ngIf="arePostsShowing">
+            <div class="user-post" *ngFor="let post of userPosts" (click)="showPost(post)">
+                <div class="user-post-info">
+                    <a [routerLink]="['/g/', post.group.name]">g/{{post.group.name}}</a> • Posted by <a [routerLink]="['/u/', post.user.username]" (click)="$event.stopPropagation()">{{post.user.username}}</a> • {{post.dateCreated | date: 'dd.MM.yyyy. HH:mm'}} 
+                </div>
+                <div class="user-post-title">
+                    <p>{{post.title}}</p>
+                </div>
+                <div *ngIf="isOwnUserProfile" class="user-post-tools">
+                    <fa-icon [icon]="faTrashCan" class="trash-icon" (click)="$event.stopPropagation();deletePost(post.group.name, post.id)"></fa-icon>
+                </div>
+            </div>
+        </div>
+        <div class="user-elements" *ngIf="!arePostsShowing">
+            <div class="user-comment" *ngFor="let comment of userComments">
+                <div class="user-comment-info">
+                    <p>Commented by <a [routerLink]="['/u/',comment.user.username]">{{comment.user.username}}</a>
+                </div>
+                <div class="user-comment-text">
+                    <p>{{comment.text}}</p>
+                </div>
+                <div class="user-comment-tools" *ngIf="isOwnUserProfile" >
+                    <fa-icon class="trash-icon" [icon]="faTrashCan" (click)="deleteComment(comment.id)"></fa-icon>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

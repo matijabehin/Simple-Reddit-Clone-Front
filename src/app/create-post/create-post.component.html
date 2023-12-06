@@ -1,0 +1,20 @@
+<app-navigation></app-navigation>
+<div class="container">
+    <div class="row">
+        <div class="col-6 form h-100">
+            <form #createPost="ngForm" (ngSubmit)="createGroupPost(createPost.value)">
+                <input type="text" ngModel name="title" id="title" placeholder="Title" required class="input-field">
+                <textarea class="text input-field" ngModel name="text" id="text" placeholder="Text" required></textarea>
+                <input class="btn btn-primary" type="submit" value="Create a post">
+            </form>
+        </div>
+        <div class="offset-1 col-5 side-bar h-100">
+            <div class="side-bar-title">
+                <h3>g/{{group.name}}</h3>
+                <p>{{group.description}}</p>
+                <button *ngIf="isGroupAlreadyFollowed" class="btn follow-button" (click)="followBtnClicked()">Unfollow</button>
+                <button *ngIf="!isGroupAlreadyFollowed" class="btn follow-button" (click)="followBtnClicked()">Follow</button>
+            </div>
+        </div>
+    </div>
+</div>

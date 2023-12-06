@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div class="row header">
+      <div class="col-2 box d-flex align-items-center">
+        <img src="../assets/img/logo_transp.png" (click)="goToHomePage()" id="logo" >
+      </div>
+      <div class="col-5 box d-flex align-items-center justify-content-center">
+        <div class="input-group">
+          <input type="text" class="form-control shadow-none" [(ngModel)]="searchTerm" (input)="onSearch()" id="text" placeholder="Search groups" autocomplete="off">
+          <button class="btn btn-primary bg-brand-color" (click)="goToCreateGroupPage()">or create</button>
+          <div class="result-box" >
+            <ul class="results">
+              <li class="result"  *ngFor="let res of results">
+                  <a [routerLink]="['/g/', res.name]">g/{{res.name}}</a> 
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col offset-3 col-2 box profile-container " (click)="goToUserProfilePage()">
+        <div class="profile-btn row">
+            <div class="col-3 box user-icon">
+              <fa-icon class="fa-user" [icon]="faUser"></fa-icon>
+            </div>
+            <div class="offset-1 col-5 box row display-flex justify-content-center align-items-center">
+                {{user?.username}}
+            </div>
+            <div class="offset-1 col-1 box row display-flex justify-content-center align-items-center">
+              <fa-icon class="faSignOut" [icon]="faSignOut" (click)="$event.stopPropagation();logout()"></fa-icon>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

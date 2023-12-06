@@ -1,0 +1,23 @@
+<app-navigation></app-navigation>
+<div class="container">
+    <div class="row">
+        <div class="col-6 posts">
+            <div class="post" *ngFor="let post of posts" (click)="showPost(post)">
+                <div class="post-info">
+                   <a [routerLink]="['/g/', post.group.name]">g/{{post.group.name}}</a>  • Posted by <a [routerLink]="['/u/', post.user.username]" (click)="$event.stopPropagation()">{{post.user.username}}</a> • {{post.dateCreated | date: 'dd.MM.yyyy. HH:mm'}} 
+                </div>
+                <div class="post-title">
+                    <p>{{post.title}}</p>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="groups?.length" class="offset-1 col-5 side-bar h-100">
+            <div class="side-bar-title">Groups you're following:</div>
+            <ul class="side-bar-group-list"  >
+                <li *ngFor="let group of groups">
+                    <a [routerLink]="['/g/', group.name]">g/{{group.name}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

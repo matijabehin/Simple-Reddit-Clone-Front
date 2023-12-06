@@ -1,0 +1,100 @@
+.header{
+  height: 60px;
+  border-bottom: 1px solid #EDEFF1;
+  background-color: #FFFFFF;
+}
+.box {
+  height: 100%;
+}
+.bg-brand-color{
+  background-color: #8B6D96;
+}
+#logo{
+  height: 50%;
+}
+
+.profile-container{
+  display: flex;
+  align-items: center;
+}
+.profile-btn{
+  height: 90%;
+  width: 70%;
+  border: 1px solid #ececec;
+  border-radius: 5px;
+  margin-left: auto;
+}
+.profile-btn:hover{
+  border: 1px solid #ccc;
+}
+
+.user-icon{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.fa-user{
+  margin-top: 3px;
+  font-size: 30px;
+}
+
+.input-group {
+  position: relative;
+  width: 100%;
+}
+  
+.form-control {
+  width: calc(100% - 100px); 
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.btn-primary {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 0 5px 5px 0;
+  font-size: 16px;
+}
+  
+.result-box {
+  position: absolute;
+  width: calc(100%);
+  top: calc(100%); 
+  left: 0;
+  background-color: #fff;
+  border-top: none;
+  /*border: 1px solid #ccc;*/
+}
+
+.results {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.result {
+  width: 100%;
+  padding: 10px;
+}
+  
+.result:hover {
+  background-color: #f0f0f0;
+}
+  
+.form-control:focus + .btn-primary + .result-box {
+  display: block;
+}
+.result a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: #333;
+}
+  
+.faSignOut:hover{
+  color:red;
+}

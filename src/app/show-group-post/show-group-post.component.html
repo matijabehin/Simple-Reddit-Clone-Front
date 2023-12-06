@@ -1,0 +1,34 @@
+<app-navigation></app-navigation>
+<div class="container">
+    <div class="post-box">
+        <div class="post-info-box">
+            <p><a [routerLink]="['/g/', group.name]">g/{{group.name}}</a> • Posted by <a [routerLink]="['/u/',post.user.username]">{{post.user.username}}</a> • {{post.dateCreated | date:'dd.MM.yyyy. HH:mm'}}</p>
+        </div>
+        <div class="post-title-box">
+            <h3>{{post.title}}</h3>
+        </div>
+        <div class="post-text-box">
+            <p>{{post.text}}</p>
+        </div>
+    </div>
+    <div class="make-comment-box">
+        <div class="make-comment-form-box">
+          <form autocomplete="off" #comment="ngForm" (ngSubmit)="addComment(comment.value.text, group.name, post.id)">
+            <label for="text">Comment as {{user.username}}</label>
+            <textarea ngModel name="text" id="text" placeholder="Write your comment here..."></textarea>
+            <button class="btn btn-primary" type="submit">Comment</button>
+          </form>
+        </div>
+      </div>
+      
+    <div class="comments-container">
+        <div class="comment-box" *ngFor="let comment of post.comments">
+            <div class="comment-info-box">
+                <p>Commented by <a [routerLink]="['/u/',comment.user.username]">{{comment.user.username}}</a> • {{comment.dateCreated | date: 'dd.MM.yyyy. HH:mm'}}</p>
+            </div>
+            <div class="comment-text">
+                <p>{{comment.text}}</p>
+            </div>
+        </div>
+    </div>
+</div>

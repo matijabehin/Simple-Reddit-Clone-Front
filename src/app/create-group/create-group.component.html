@@ -1,0 +1,11 @@
+<app-navigation></app-navigation>
+<div class="container">
+  <div>
+    <form #newGroup="ngForm" (ngSubmit)="createGroup(newGroup.value)" class="group-form">
+      <input type="text" ngModel name="name" id="name" placeholder="Group name" class="form-input" autocomplete="off">
+      <textarea ngModel name="description" id="description" placeholder="Group description" class="form-textarea"></textarea>
+      <button type="submit" class="form-submit-btn">Create Group</button>
+    </form>
+  </div>
+</div>
+  

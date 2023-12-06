@@ -1,0 +1,39 @@
+<app-navigation></app-navigation>
+<div class="container">
+    <div class="row">
+        <div class="col-6 posts-container">
+            
+            <div class="create-post">
+                <input type="text" (click)="goToCreatePostPage()" placeholder="Create post">
+            </div>
+
+            <label for="post-dropdown">Sort posts by: </label>
+            <select id="post-dropdown" (change)="onPostDropDownChange($event)">
+                <option value="day">Day</option>
+                <option value="week">Week</option>
+                <option value="month">Month</option>
+                <option value="year">year</option>
+                <option value="all" selected>all</option>
+            </select>
+
+            <div class="posts-container" *ngFor="let groupPost of groupPosts">
+                <div class="post" style="cursor: pointer;" (click)="showPost(groupPost.id)">
+                    <div class="post-info">
+                        Posted by <a [routerLink]="['/u/', groupPost.user.username]" (click)="$event.stopPropagation()">{{groupPost.user.username}}</a> • {{groupPost.dateCreated | date: 'dd.MM.yyyy. HH:mm'}}
+                    </div>
+                    <div class="post-title-box">
+                        <h3>{{groupPost.title}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offset-1 col-5 side-bar h-100">
+            <div class="side-bar-title">
+                <h3>g/{{group.name}}</h3>
+                <p>{{group.description}}</p>
+                <button *ngIf="isGroupAlreadyFollowed" class="btn follow-button" (click)="followBtnClicked()">Unfollow</button>
+                <button *ngIf="!isGroupAlreadyFollowed" class="btn follow-button" (click)="followBtnClicked()">Follow</button>
+            </div>
+        </div>
+    </div>
+</div>

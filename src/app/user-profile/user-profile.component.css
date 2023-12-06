@@ -1,0 +1,128 @@
+.container{
+    width:70%;
+    margin: auto;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.user-profile-container {
+    background-color: #f9f9f9;
+    border: 1px solid #EDEFF1;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.user-info {
+    margin-bottom: 20px;
+}
+
+.user-info-username {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.user-info-dateCreated {
+    font-size: 14px;
+    color: #666;
+}
+
+.user-elements {
+    display: grid;
+    gap: 20px;
+}
+
+.user-post {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+.user-post-title{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.user-post .user-post-title p{
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0;
+    padding: 10px;
+}
+.user-post-info{
+    width: 100%;
+    background-color: #8B6D96;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 8px;
+}
+.user-post-info a{text-decoration: none;color: black;} .user-post-info a:hover{text-decoration: underline;}
+.post-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.post-date {
+    font-size: 14px;
+    color: #888;
+}
+
+.post-content p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.user-post:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.user-post-tools{
+    width: 100%;
+    background-color: #ccc;
+}
+.btn-box{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0;
+}
+.btn-box button{
+    width: 100%;
+}
+
+.user-comment{
+    width: 100%;
+    background-color: 	#E5E4E2;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.user-comment-info{
+    width: 100%;
+    background-color: #E0B0FF;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.user-comment-info p, .user-comment-text p {padding: 5px;}
+.user-comment-text{
+    display: flex;
+    align-items: center;
+}
+.trash-icon{padding:5px;}
+.trash-icon:hover{color:red;}
+
+.user-comment-tools{
+    width: 100%;
+    background-color: #ccc;
+}
