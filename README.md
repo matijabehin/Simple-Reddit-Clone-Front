@@ -1,3 +1,6 @@
+# Video Demonstration
+YouTube video link: https://youtu.be/7NNw_uZpPNM
+
 # SocialMediaFront
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
