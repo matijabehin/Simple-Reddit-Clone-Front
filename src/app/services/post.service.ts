@@ -3,24 +3,22 @@ import { Injectable } from '@angular/core';
 import { PostDTO } from '../module/PostDTO';
 import { Router } from '@angular/router';
 import { User } from '../module/User';
+import { Environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
   
-  BASE_URL:string = "http://localhost:8080";
-  url:string = "";
-
   constructor(private http:HttpClient,
               private router : Router) { }
 
   public getPostByIdAndGroupName(id:number, groupName:string){
-    this.url = this.BASE_URL + "/g/" + groupName + "/post/" + id;
-    return this.http.get<PostDTO>(this.url);
+    let url = Environment.BASE_URL + "/g/" + groupName + "/post/" + id;
+    return this.http.get<PostDTO>(url);
   }
   createGroupPost(groupName:string, postData:PostDTO){
-    this.url = this.BASE_URL + "/g/" + groupName + "/createPost"
+    let url = Environment.BASE_URL + "/g/" + groupName + "/createPost"
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -31,46 +29,46 @@ export class PostService {
       responseType: 'json' as const,
     };
 
-    this.http.post<PostDTO>(this.url, postData, httpOptions).subscribe((response)=> {
+    this.http.post<PostDTO>(url, postData, httpOptions).subscribe((response)=> {
       console.log(response);
     });
   }
   public showPost(groupName: string, postId: number){
-    this.url = "/g/" + groupName + "/post/" + postId;
-    this.router.navigate([this.url]);
+    let url = "/g/" + groupName + "/post/" + postId;
+    this.router.navigate([url]);
   }
   public showPostByDateAfter(groupName:string, value:string){
-    this.url = this.BASE_URL + "/g/" + groupName + "/top/?t=" + value;
+    let url = Environment.BASE_URL + "/g/" + groupName + "/top/?t=" + value;
 
-    return this.http.get<PostDTO[]>(this.url);
+    return this.http.get<PostDTO[]>(url);
   }
 
   public getUserPosts(id:number){
-    this.url = this.BASE_URL + "/api/post/getUserPosts/" + id;
+    let url = Environment.BASE_URL + "/api/post/getUserPosts/" + id;
 
-    return this.http.get<PostDTO[]>(this.url);
+    return this.http.get<PostDTO[]>(url);
   }
 
   public getHomeFeed(){
-    this.url = this.BASE_URL + "/api/post/getHomeFeed";
-    return this.http.get<PostDTO[]>(this.url);
+    let url = Environment.BASE_URL + "/api/post/getHomeFeed";
+    return this.http.get<PostDTO[]>(url);
   }
 
   public deletePost(groupName:string, postId:number){
-    this.url = this.BASE_URL + "/g/" + groupName + "/deletePost/" + postId;
+    let url = Environment.BASE_URL + "/g/" + groupName + "/deletePost/" + postId;
 
-    return this.http.delete(this.url).subscribe((resp) => console.log(resp));
+    return this.http.delete(url).subscribe((resp) => console.log(resp));
   }
 
   public upvote(id:number, user:User){
-    this.url = this.BASE_URL + '/api/post/upvote/' + id;
+    let url = Environment.BASE_URL + '/api/post/upvote/' + id;
 
-    return this.http.post<User>(this.url, user).subscribe((resp) => console.log(resp));
+    return this.http.post<User>(url, user).subscribe((resp) => console.log(resp));
   }
 
   public getUserLikedPosts(){
-    this.url = this.BASE_URL + '/api/post/likedPosts';
+    let url = Environment.BASE_URL + '/api/post/likedPosts';
 
-    return this.http.get<PostDTO[]>(this.url);
+    return this.http.get<PostDTO[]>(url);
   }
 }

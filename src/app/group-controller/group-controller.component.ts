@@ -13,8 +13,6 @@ import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./group-controller.component.css']
 })
 export class GroupControllerComponent implements OnInit {
-  BASE_URL : string = "http://localhost:8080";
-
   group : Group = new Group("","");
   groupPosts : PostDTO[] = [];
   isGroupAlreadyFollowed = false;

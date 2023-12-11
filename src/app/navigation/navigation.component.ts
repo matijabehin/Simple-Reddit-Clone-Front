@@ -13,7 +13,6 @@ export class NavigationComponent implements OnInit{
   faSignOut = faSignOut;
   faUser = faUser;
 
-  BASE_URL : string = "http://localhost:8080";
   // @ts-ignore
   user : User | undefined;
 

@@ -3,22 +3,22 @@ import { UserCredentials } from '../module/UserCredentials';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Token } from '../module/Token';
 import { User } from '../module/User';
+import { Environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  BASE_URL : string = "http://localhost:8080";
-  url : string = "";
+
   token : string = "";
 
   constructor(private http:HttpClient) { }
 
   login(userCredentials: UserCredentials){
 
-    this.url = this.BASE_URL + "/auth/login";
+    let url = Environment.BASE_URL + '/auth/login';
 
-    this.http.post<Token>(this.url, userCredentials).subscribe(
+    this.http.post<Token>(url, userCredentials).subscribe(
       (response) => {
         this.token = response.token;
         localStorage.setItem('Token', this.token);
@@ -27,9 +27,10 @@ export class AuthService {
   }
 
   register(userCredentials:UserCredentials){
-    this.url = this.BASE_URL + "/auth/register";
+    
+    let url = Environment.BASE_URL + '/auth/register';
 
-    this.http.post<Token>(this.url, userCredentials).subscribe(
+    this.http.post<Token>(url, userCredentials).subscribe(
       (resp) => {
         //this.token = resp.token;
         //localStorage.setItem('Token', this.token);
@@ -38,9 +39,9 @@ export class AuthService {
   }
 
   getUser() {
-    this.url = this.BASE_URL + "/auth/user";
+    let url = Environment.BASE_URL + '/auth/user';
   
-    return this.http.get<User>(this.url);
+    return this.http.get<User>(url);
   }
   
 }
